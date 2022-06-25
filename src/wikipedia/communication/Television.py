@@ -1,5 +1,5 @@
-from wikipedia.templates.TelevisionTemplate import TelevisionTemplate
-from wikipedia.communication.Api import Api
+from src.wikipedia.templates.TelevisionTemplate import TelevisionTemplate
+from src.wikipedia.communication.Api import Api
 class Televisions(TelevisionTemplate, Api):
     """_summary_
 

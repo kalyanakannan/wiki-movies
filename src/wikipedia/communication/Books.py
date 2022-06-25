@@ -1,5 +1,5 @@
-from wikipedia.templates.BookTemplate import BookTemplate
-from wikipedia.communication.Api import Api
+from src.wikipedia.templates.BookTemplate import BookTemplate
+from src.wikipedia.communication.Api import Api
 class Books(BookTemplate, Api):
     """_summary_
 

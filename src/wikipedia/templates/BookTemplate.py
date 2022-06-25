@@ -1,5 +1,5 @@
-from wikipedia.templates.Template import Template
-class BookTemplates(Template):
+from src.wikipedia.templates.Template import Template
+class BookTemplate(Template):
 
     def __init__(self):
         Template.__init__(self, "Template:Infobox_book", "Infobox book")

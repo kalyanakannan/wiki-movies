@@ -1,4 +1,4 @@
-from wikipedia.templates.Template import Template
+from src.wikipedia.templates.Template import Template
 class TelevisionTemplate(Template):
 
     def __init__(self):

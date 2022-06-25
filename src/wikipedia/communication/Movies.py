@@ -1,5 +1,5 @@
-from wikipedia.templates.MovieTemplate import MovieTemplate
-from wikipedia.communication.Api import Api
+from src.wikipedia.templates.MovieTemplate import MovieTemplate
+from src.wikipedia.communication.Api import Api
 class Movies(MovieTemplate, Api):
 
     def __init__(self):

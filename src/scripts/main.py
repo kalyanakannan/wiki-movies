@@ -1,7 +1,8 @@
-from wikipedia.Factory.WikiFactory import WikiFactory
+from src.wikipedia.Factory.WikiFactory import WikiFactory
 
 def main():
-    wiki = WikiFactory("movies")
+    wiki_factory = WikiFactory()
+    wiki = wiki_factory.createObject("Movies")
     get_movie = True
     eicontinue = False
     while get_movie:
