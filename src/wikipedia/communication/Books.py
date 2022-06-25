@@ -1,15 +1,16 @@
-from wiki.templates.TelevisionTemplate import TelevisionTemplate
-from wiki.communication.Api import WikiApi
-class Televisions(TelevisionTemplate, WikiApi):
+from wikipedia.templates.BookTemplate import BookTemplate
+from wikipedia.communication.Api import Api
+class Books(BookTemplate, Api):
     """_summary_
 
     Args:
-        TelevisionTemplate (_type_): _description_
-        WikiApi (_type_): _description_
+        BookTemplate (_type_): _description_
+        Api (_type_): _description_
     """
+
     def __init__(self):
-        WikiApi.__init__(self)
-        TelevisionTemplate.__init__(self)
+        Api.__init__(self)
+        BookTemplate.__init__(self)
         self.params = {
             "action": "query",
             "list": "embeddedin",
@@ -20,20 +21,20 @@ class Televisions(TelevisionTemplate, WikiApi):
 
     
     def extractDetails(self,page_details) -> dict:
-        """extract television details like name,director name ...etc
+        """extract book details like name,director name ...etc
         Args:
             page_details (_type_): _description_
         """
-        television_details = []
+        book_details = []
         for pageid in page_details:
             content = page_details[pageid]['revisions'][0]["*"]
             self.setAttributes(content)
             details = self.extractTemplateAttributeByPageId(content,self.infobox_name, pageid)
-            television_details.append(details)
-        return television_details
+            book_details.append(details)
+        return book_details
 
-    def getTelevisions(self, eicontinue=False):
-        """get television info
+    def getBooks(self, eicontinue=False):
+        """_summary_
 
         Args:
             eicontinue (bool, optional): _description_. Defaults to False.
@@ -44,5 +45,5 @@ class Televisions(TelevisionTemplate, WikiApi):
         self.setFormat()
         if (eicontinue):
             self.params['eicontinue'] = self.getContinue()
-        televisions = self.request.get(url=self.BaseUrl, params=self.params).json()
-        return [televisions["query"]["embeddedin"],televisions["continue"]["eicontinue"]]
+        books = self.request.get(url=self.BaseUrl, params=self.params).json()
+        return [books["query"]["embeddedin"],books["continue"]["eicontinue"]]

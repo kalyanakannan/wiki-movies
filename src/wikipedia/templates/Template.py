@@ -35,3 +35,9 @@ class Template:
     def getCurrentAttributes(self):
 
         return self.attributes.keys()
+
+    def getTemplateName(self):
+        return self.template_name
+    
+    def getInfoboxName(self):
+        return self.infobox_name

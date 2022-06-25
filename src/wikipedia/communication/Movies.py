@@ -1,9 +1,9 @@
-from wiki.templates.MovieTemplate import MovieTemplate
-from wiki.communication.Api import WikiApi
-class Movies(MovieTemplate, WikiApi):
+from wikipedia.templates.MovieTemplate import MovieTemplate
+from wikipedia.communication.Api import Api
+class Movies(MovieTemplate, Api):
 
     def __init__(self):
-        WikiApi.__init__(self)
+        Api.__init__(self)
         MovieTemplate.__init__(self)
         self.params = {
             "action": "query",

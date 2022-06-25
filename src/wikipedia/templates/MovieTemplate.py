@@ -1,4 +1,4 @@
-from wiki.templates.Template import Template
+from wikipedia.templates.Template import Template
 class MovieTemplate(Template):
 
     def __init__(self):

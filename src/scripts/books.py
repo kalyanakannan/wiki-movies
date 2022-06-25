@@ -1,4 +1,5 @@
-from src.wiki.Factory.WikiFactory import WikiFactory
+from wikipedia.Factory.WikiFactory import WikiFactory
+
 def main():
     wiki = WikiFactory("movies")
     get_movie = True

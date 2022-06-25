@@ -1,23 +1,15 @@
 import requests
 import numpy as np
 import wikitextparser as wtp
-class WikiApi:
+
+class Api:
     
     def __init__(self):
         self.BaseUrl = "https://www.wikipedia.org/w/api.php"
-        self.site_name = 'wikipedia:en'
         self.request = requests.Session()
         self.separate = 10
         self.format = 'json'
         self.params = {}
-        self.movie_template = "Template:Infobox_film"
-        self.television_template = "Template:Infobox_television"
-        self.book_template = "Template:Infobox_book"
-        self.templates = {
-            "movies": self.movie_template,
-            "televisions": self.television_template,
-            "books": self.book_template
-        }
 
     def setFormat(self, format='json'):
         """set respone format for the api
@@ -156,14 +148,6 @@ class WikiApi:
             raise Exception("pageIds is empty")
 
         self.params['pageids'] = pageIds
-
-    def getAvailableTemplate(self):
-        """_summary_
-
-        Returns:
-            _type_: _description_
-        """
-        return self.templates
 
     def formatAttributeByPageId(self, attributes, page_id):
         """_summary_
