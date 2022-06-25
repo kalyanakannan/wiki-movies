@@ -1,5 +1,5 @@
 from src.wikipedia.templates.Template import Template
-from src.config.configManager import ConfigManager
+from src.library.configManager import ConfigManager
 class TelevisionTemplate(Template):
 
     def __init__(self):
