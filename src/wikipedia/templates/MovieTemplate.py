@@ -1,5 +1,5 @@
 from src.wikipedia.templates.Template import Template
-from src.wikipedia.config.configManager import ConfigManager
+from src.config.configManager import ConfigManager
 class MovieTemplate(Template):
 
     def __init__(self):
