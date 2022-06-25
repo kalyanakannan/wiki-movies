@@ -1,11 +1,10 @@
 from src.wikipedia.templates.Template import Template
-import configparser
+from src.wikipedia.config.configManager import ConfigManager
 class MovieTemplate(Template):
 
     def __init__(self):
-        config = configparser.SafeConfigParser()
-        config.read('config/config.ini')
-        Template.__init__(self, config["templates"]["movie"], config["infoBox"]["movie"])
+        config = ConfigManager()
+        Template.__init__(self, config.get("templates")["movie"], config.get("infoBox")["movie"])
 
     def getAllAttributes(self):
         """_summary_

@@ -1,11 +1,10 @@
 from src.wikipedia.templates.Template import Template
-import configparser
+from src.wikipedia.config.configManager import ConfigManager
 class BookTemplate(Template):
 
     def __init__(self):
-        config = configparser.SafeConfigParser()
-        config.read('config/config.ini')
-        Template.__init__(self, config["templates"]["book"], config["infoBox"]["book"])
+        config = ConfigManager()
+        Template.__init__(self, config.get("templates")["book"], config.get("infoBox")["book"])
 
     def getAllAttributes(self):
         """_summary_
