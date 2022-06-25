@@ -1,8 +1,11 @@
 from src.wikipedia.templates.Template import Template
+import configparser
 class TelevisionTemplate(Template):
 
     def __init__(self):
-        Template.__init__(self,"Template:Infobox_television","Infobox television")
+        config = configparser.SafeConfigParser()
+        config.read('config/config.ini')
+        Template.__init__(self,config["templates"]["television"], config["infoBox"]["television"])
 
     def getAllAttributes(self):
         """_summary_
