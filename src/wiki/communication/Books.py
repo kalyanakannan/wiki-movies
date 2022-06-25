@@ -1,6 +1,6 @@
 from wiki.templates.BookTemplate import BookTemplate
 from wiki.communication.Api import WikiApi
-class movies(BookTemplate, WikiApi):
+class Books(BookTemplate, WikiApi):
     """_summary_
 
     Args:
