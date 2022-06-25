@@ -1,3 +1,4 @@
+from urllib import response
 from src.wikipedia.templates.MovieTemplate import MovieTemplate
 from src.wikipedia.communication.Api import Api
 class Movies(MovieTemplate, Api):
@@ -26,7 +27,7 @@ class Movies(MovieTemplate, Api):
             movie_details.append(details)
         return movie_details
 
-    def getMovies(self, eicontinue=False):
+    def getMovies(self):
         """_summary_
 
         Args:
@@ -36,7 +37,15 @@ class Movies(MovieTemplate, Api):
             _type_: _description_
         """
         self.setFormat()
-        if (eicontinue):
+        response = {
+            "movies":"",
+            "continue":""
+        }
+        if (self.eicontinue):
             self.params['eicontinue'] = self.getContinue()
         movies = self.request.get(url=self.BaseUrl, params=self.params).json()
-        return [movies["query"]["embeddedin"],movies["continue"]["eicontinue"]]
+        if "embeddedin" in movies["query"]:
+            response['movies'] = movies["query"]["embeddedin"]
+        if "continue" in movies:
+            response['continue'] = movies["continue"]["eicontinue"]
+        return response

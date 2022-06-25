@@ -8,6 +8,9 @@ class WikiFactory:
         pass
 
     def createObject(self, type):
-        targetclass = type.capitalize()
-        return globals()[targetclass]()
+        try:
+            targetclass = type.capitalize()
+            return globals()[targetclass]()
+        except:
+            raise Exception("class not found")
         

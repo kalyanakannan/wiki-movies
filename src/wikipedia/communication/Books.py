@@ -33,7 +33,7 @@ class Books(BookTemplate, Api):
             book_details.append(details)
         return book_details
 
-    def getBooks(self, eicontinue=False):
+    def getBooks(self):
         """_summary_
 
         Args:
@@ -43,7 +43,15 @@ class Books(BookTemplate, Api):
             _type_: _description_
         """
         self.setFormat()
-        if (eicontinue):
+        response = {
+            "books":"",
+            "continue":""
+        }
+        if (self.eicontinue):
             self.params['eicontinue'] = self.getContinue()
         books = self.request.get(url=self.BaseUrl, params=self.params).json()
-        return [books["query"]["embeddedin"],books["continue"]["eicontinue"]]
+        if "embeddedin" in books["query"]:
+            response['books'] = books["query"]["embeddedin"]
+        if "continue" in books:
+            response['continue'] = books["continue"]["eicontinue"]
+        return response

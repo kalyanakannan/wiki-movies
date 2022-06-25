@@ -10,6 +10,7 @@ class Api:
         self.separate = 10
         self.format = 'json'
         self.params = {}
+        self.eicontinue = ""
 
     def setFormat(self, format='json'):
         """set respone format for the api
@@ -164,9 +165,10 @@ class Api:
         if(not(page_id)):
             raise Exception("page_id is empty")
 
-        details = {page_id:{}}
+        details = {}
+        details["page_id"] = page_id
         for attribute in attributes:
-            details[page_id][attribute.name.strip()] = attribute.value.strip()
+            details[attribute.name.strip()] = attribute.value.strip()
         return details
 
     def extractTemplateAttributeByPageId(self, text,Infobox_name, page_id) -> dict:

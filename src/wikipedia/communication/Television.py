@@ -32,8 +32,8 @@ class Televisions(TelevisionTemplate, Api):
             television_details.append(details)
         return television_details
 
-    def getTelevisions(self, eicontinue=False):
-        """get television info
+    def getTelevisions(self):
+        """_summary_
 
         Args:
             eicontinue (bool, optional): _description_. Defaults to False.
@@ -42,7 +42,15 @@ class Televisions(TelevisionTemplate, Api):
             _type_: _description_
         """
         self.setFormat()
-        if (eicontinue):
+        response = {
+            "televisions":"",
+            "continue":""
+        }
+        if (self.eicontinue):
             self.params['eicontinue'] = self.getContinue()
         televisions = self.request.get(url=self.BaseUrl, params=self.params).json()
-        return [televisions["query"]["embeddedin"],televisions["continue"]["eicontinue"]]
+        if "embeddedin" in televisions["query"]:
+            response['televisions'] = televisions["query"]["embeddedin"]
+        if "continue" in televisions:
+            response['continue'] = televisions["continue"]["eicontinue"]
+        return response

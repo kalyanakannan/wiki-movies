@@ -33,7 +33,6 @@ class Template:
         return self.attributes[key]
 
     def getCurrentAttributes(self):
-
         return self.attributes.keys()
 
     def getTemplateName(self):
