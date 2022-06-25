@@ -1,3 +1,3 @@
 # wiki-movies
-wikipedia
-get wiki movies, books, television show details
+
+get wikipedia movies, books, television show details and store it into json files
